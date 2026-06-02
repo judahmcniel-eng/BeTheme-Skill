@@ -35,8 +35,6 @@ Claude will automatically load the entire cinematic BeTheme skill and keep it sy
 7. Sprite Sheet Optimization (Ultimate Performance Method)  
 8. Ready-to-Use Recipes & Pro Workflow  
 
-*(Full detailed sections 1–8 follow exactly as before – all content is included below)*
-
 ### 1. Core BeTheme Architecture & Gotchas
 - BeTheme stores data in serialized arrays and relies heavily on shortcodes.  
 - Always let the AI inspect live files in `wp-content/themes/betheme` and the database.  
@@ -93,7 +91,7 @@ Claude will automatically load the entire cinematic BeTheme skill and keep it sy
 - Drag Media Carousel / Slider → add numbered JPGs → set 0ms transition + autoplay.
 
 **Method 2 – Scroll-Driven Sequence (Code Element)**  
-Use the numbered JPG version when sprite sheet is not yet ready (full code available in earlier versions or request updated version).
+Use the numbered JPG version when sprite sheet is not yet ready.
 
 ### 7. Sprite Sheet Optimization (Ultimate Performance Method)
 **Why it wins**: 1 HTTP request instead of 30–60 frames.
@@ -109,9 +107,11 @@ Use the numbered JPG version when sprite sheet is not yet ready (full code avail
 </div>
 
 <script>
-  const spriteUrl = 'https://your-site.com/wp-content/uploads/YEAR/cinematic-sprite.webp'; // ← CHANGE THIS
-  const totalFrames = 60;
+  // ← CHANGE THIS LINE to your actual sprite URL
+  const spriteUrl = 'https://your-site.com/wp-content/uploads/2026/cinematic-sprite.webp'; 
+  const totalFrames = 60;                    // number of frames in your sprite
   const frameWidthPercent = 100 / totalFrames;
+
   const spriteElement = document.getElementById('sprite');
   spriteElement.style.backgroundImage = `url('${spriteUrl}')`;
 
