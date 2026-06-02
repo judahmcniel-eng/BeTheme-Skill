@@ -1,0 +1,95 @@
+<!--
+BeTheme Code Element Example: JPG/WebP Frame Sequence Scroll Hero
+Use this when a sprite sheet is not ready.
+Replace frameBaseUrl, frameCount, and fileExtension.
+-->
+
+<div class="bt-frame-sequence-hero" id="bt-frame-sequence-hero">
+  <img class="bt-frame-sequence-img" id="bt-frame-sequence-img" alt="Cinematic hero frame" />
+  <div class="bt-frame-sequence-overlay"></div>
+</div>
+
+<style>
+  .bt-frame-sequence-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+    isolation: isolate;
+  }
+
+  .bt-frame-sequence-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .bt-frame-sequence-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .35);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  @media (max-width: 767px) {
+    .bt-frame-sequence-hero {
+      height: 75vh;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  const frameBaseUrl = 'https://your-site.com/wp-content/uploads/2026/hero-frame-';
+  const frameCount = 60;
+  const fileExtension = 'webp';
+  const padLength = 4;
+
+  const container = document.getElementById('bt-frame-sequence-hero');
+  const img = document.getElementById('bt-frame-sequence-img');
+
+  if (!container || !img) return;
+
+  function frameUrl(index) {
+    const number = String(index + 1).padStart(padLength, '0');
+    return `${frameBaseUrl}${number}.${fileExtension}`;
+  }
+
+  function preloadFrames() {
+    for (let i = 0; i < frameCount; i++) {
+      const preload = new Image();
+      preload.src = frameUrl(i);
+    }
+  }
+
+  let ticking = false;
+
+  function updateFrame() {
+    const rect = container.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const progress = Math.min(Math.max((viewportHeight - rect.top) / (viewportHeight + container.offsetHeight), 0), 1);
+    const currentFrame = Math.floor(progress * (frameCount - 1));
+
+    img.src = frameUrl(currentFrame);
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(updateFrame);
+      ticking = true;
+    }
+  }
+
+  img.src = frameUrl(0);
+  preloadFrames();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  updateFrame();
+})();
+</script>
