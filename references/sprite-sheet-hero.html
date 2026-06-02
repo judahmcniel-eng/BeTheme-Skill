@@ -1,0 +1,93 @@
+<!--
+BeTheme Code Element Example: Sprite Sheet Scroll Hero
+Paste this into a BeBuilder Code element inside a full-screen Global Section.
+Replace SPRITE_URL and totalFrames.
+-->
+
+<div class="bt-cinematic-sprite-hero" id="bt-cinematic-sprite-hero">
+  <div class="bt-cinematic-sprite" id="bt-cinematic-sprite"></div>
+  <div class="bt-cinematic-overlay"></div>
+</div>
+
+<style>
+  .bt-cinematic-sprite-hero {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    isolation: isolate;
+  }
+
+  .bt-cinematic-sprite {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    z-index: 1;
+  }
+
+  .bt-cinematic-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, .45), rgba(0, 0, 0, .2));
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  @media (max-width: 767px) {
+    .bt-cinematic-sprite-hero {
+      height: 75vh;
+      background-image: url('MOBILE_FALLBACK_IMAGE.webp');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .bt-cinematic-sprite {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  const spriteUrl = 'SPRITE_URL.webp';
+  const totalFrames = 60;
+  const scrollDistanceMultiplier = 1.8;
+
+  const container = document.getElementById('bt-cinematic-sprite-hero');
+  const sprite = document.getElementById('bt-cinematic-sprite');
+
+  if (!container || !sprite) return;
+
+  sprite.style.backgroundImage = `url('${spriteUrl}')`;
+
+  let ticking = false;
+
+  function updateSprite() {
+    const rect = container.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const start = viewportHeight;
+    const end = -container.offsetHeight * scrollDistanceMultiplier;
+    const progress = Math.min(Math.max((start - rect.top) / (start - end), 0), 1);
+    const currentFrame = Math.floor(progress * (totalFrames - 1));
+    const frameWidthPercent = 100 / totalFrames;
+
+    sprite.style.backgroundPositionX = -(currentFrame * frameWidthPercent) + '%';
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(updateSprite);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  updateSprite();
+})();
+</script>
