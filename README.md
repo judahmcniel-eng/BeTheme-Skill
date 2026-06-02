@@ -18,32 +18,12 @@ Claude will automatically load the entire cinematic BeTheme skill and keep it sy
 
 ---
 
-**Original skill content starts below:**
-
 # BeTheme Cinematic Scroll Heroes – Complete Mastery Skill  
 **For Claude (Projects / Knowledge Base) + Novamira Pro Skills**
 
 **Version:** 1.0 (June 2026)  
 **Author:** Compiled by Grok for JudahFlix  
 **Purpose:** Give Claude (or Novamira) deep, production-ready knowledge of BeTheme’s BeBuilder so it can instantly design, dissect, and optimize cinematic scroll heroes using native elements + safe custom code.
-
-## How to Use This Skill
-
-### In Claude
-1. Create a new **Claude Project** (or use an existing one).
-2. Upload this file as **Knowledge**.
-3. In the project instructions, add:  
-   > “You are an expert BeTheme cinematic hero specialist. Always reference the BeTheme Cinematic Scroll Heroes Mastery Skill when helping with BeBuilder, parallax, video alternatives, or sprite sheets.”
-
-### In Novamira Pro
-- Create a new **Skill** → paste the entire content (or upload as `BeTheme-Cinematic-Hero-Skill.md`).
-
-### In GitHub
-1. Create a new repository (example name: `betheme-cinematic-hero-skill`).
-2. Add this file as `README.md` or `betheme-cinematic-hero-skill.md`.
-3. (Optional) Add a simple `LICENSE` (MIT) and a short `README` linking to this file.
-
----
 
 ## Table of Contents
 1. Core BeTheme Architecture & Gotchas  
@@ -55,7 +35,7 @@ Claude will automatically load the entire cinematic BeTheme skill and keep it sy
 7. Sprite Sheet Optimization (Ultimate Performance Method)  
 8. Ready-to-Use Recipes & Pro Workflow  
 
----
+*(Full detailed sections 1–8 follow exactly as before – all content is included below)*
 
 ### 1. Core BeTheme Architecture & Gotchas
 - BeTheme stores data in serialized arrays and relies heavily on shortcodes.  
@@ -113,7 +93,7 @@ Claude will automatically load the entire cinematic BeTheme skill and keep it sy
 - Drag Media Carousel / Slider → add numbered JPGs → set 0ms transition + autoplay.
 
 **Method 2 – Scroll-Driven Sequence (Code Element)**  
-Use the numbered JPG version when sprite sheet is not yet ready (full code available in earlier versions).
+Use the numbered JPG version when sprite sheet is not yet ready (full code available in earlier versions or request updated version).
 
 ### 7. Sprite Sheet Optimization (Ultimate Performance Method)
 **Why it wins**: 1 HTTP request instead of 30–60 frames.
@@ -129,7 +109,7 @@ Use the numbered JPG version when sprite sheet is not yet ready (full code avail
 </div>
 
 <script>
-  const spriteUrl = 'https://your-site.com/wp-content/uploads/YEAR/cinematic-sprite.webp';
+  const spriteUrl = 'https://your-site.com/wp-content/uploads/YEAR/cinematic-sprite.webp'; // ← CHANGE THIS
   const totalFrames = 60;
   const frameWidthPercent = 100 / totalFrames;
   const spriteElement = document.getElementById('sprite');
@@ -144,5 +124,4 @@ Use the numbered JPG version when sprite sheet is not yet ready (full code avail
   }
 
   window.addEventListener('scroll', updateSpriteOnScroll);
-  // Optional autoplay: uncomment loopPlayback function from previous guides
 </script>
