@@ -125,3 +125,22 @@ Use the numbered JPG version when sprite sheet is not yet ready.
 
   window.addEventListener('scroll', updateSpriteOnScroll);
 </script>
+
+### 8. Ready-to-Use Recipes & Pro Workflow
+1. Create new Global Section → full-screen hero.  
+2. Add sprite sheet or JPG sequence as background layer.  
+3. Overlay + Shape Divider.  
+4. Foreground content (Fancy Heading + Button).  
+5. Save → drop anywhere.  
+6. Always test performance and max_input_vars.
+
+**Final Pro Tips**:
+- Use WebP everywhere.  
+- CDN for sprite sheet.  
+- Global Styles + Presets for consistency.  
+- Layer Navigator is your best friend.
+
+---
+
+**End of Skill Document**  
+You now have a complete, self-contained cinematic BeTheme expert in one file.
