@@ -33,6 +33,12 @@ BeTheme-Skill/
     └── sprite-sheet-hero.html
 ```
 
+## Using This With Claude
+
+Add `SKILL.md` and the files inside `references/` to Claude Project Knowledge. Then ask Claude to use this knowledge when helping build, troubleshoot, or optimize BeTheme/BeBuilder cinematic scroll heroes.
+
+If Claude only lets you add a few files, add `SKILL.md` first, then add the most relevant reference files for the task.
+
 ## License
 
 MIT
